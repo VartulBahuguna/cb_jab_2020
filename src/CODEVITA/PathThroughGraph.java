@@ -23,18 +23,9 @@ public class PathThroughGraph
 
     }
 
-    class pair{
-        int key;
-        int val;
-
-        public pair(int key, int val) {
-            this.key = key;
-            this.val = val;
-        }
-    }
 
     private static int findAns(int m, int n) {
-        HashMap<Integer,Integer> map = new HashMap<>();
+
         int a = m;
         int b = n;
 
