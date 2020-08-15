@@ -8,8 +8,8 @@ public class PathThroughGraph
 
         Scanner s = new Scanner(System.in);
 
-        int n = s.nextInt();
         int m = s.nextInt();
+        int n = s.nextInt();
 
         if(m == n)
         {
@@ -17,8 +17,10 @@ public class PathThroughGraph
         }
         else
         {
-            int ans = findAns(m,n);
+            System.out.println(findAns(m,n));
         }
+
+
     }
 
     class pair{
@@ -46,7 +48,6 @@ public class PathThroughGraph
             a = findMaxFactor(a);
             lstA.add(a);
         }
-        lstA.add(1);
 
         lstB.add(n);
 
@@ -55,17 +56,20 @@ public class PathThroughGraph
             b = findMaxFactor(b);
             lstB.add(b);
         }
-        lstA.add(1);
+
+        System.out.println(lstA);
+        System.out.println(lstB);
 
         Set<Integer> set = new HashSet<>(lstA);
         int t = 1;
         for (int x : lstB) {
-            if(set.contains(x));
+            if(set.contains(x))
             {
                 t = x;
+                break;
             }
         }
-
+        System.out.println(t);
         int ans = 0;
         for (int x: lstA)
         {
@@ -74,6 +78,7 @@ public class PathThroughGraph
                 break;
             }
         }
+        ans--;
         for (int x: lstB)
         {
             ans++;
@@ -81,28 +86,20 @@ public class PathThroughGraph
                 break;
             }
         }
+        ans--;
         return ans;
     }
 
     private static int findMaxFactor(int a)
     {
-            int maxPrime = -1;
-
-            while (a % 2 == 0) {
-                maxPrime = 2;
-                a >>= 1;
-            }
-
-            for (int i = 3; i <= Math.sqrt(a); i += 2)
+        int maxPrime = 1;
+        for (int i = a-1; i >=1 ; i--) {
+            if(a%i == 0)
             {
-                while (a % i == 0)
-                {
-                    maxPrime = i;
-                    a = a / i;
-                }
+                maxPrime = i;
+                break;
             }
-            if (a > 2)
-                maxPrime = a;
+        }
 
             return maxPrime;
 
