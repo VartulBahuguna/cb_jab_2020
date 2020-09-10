@@ -52,7 +52,7 @@ public class Merge_Sort
         {
             mix[k++] = first[i++];
         }
-        while(i < second.length)
+        while(j < second.length)
         {
             mix[k++] = second[j++];
         }
